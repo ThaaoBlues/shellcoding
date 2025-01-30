@@ -11,7 +11,8 @@ Je n'ai aucune compétence préliminaire en assembleur, les codes de mes mains s
 
 ## premier challenge de shellcoding rootme 
 
-## RESSOURCES assembleur x64
+## RESSOURCES assembleur x64
+
 [Assembly Language & Computer Architecture Lecture (CS 301)](https://www.cs.uaf.edu/2017/fall/cs301/lecture/09_11_registers.html)
 
 [misc/syscalls64.md · Hackndo](https://github.com/Hackndo/misc/blob/master/syscalls64.md)
@@ -26,8 +27,6 @@ Je n'ai aucune compétence préliminaire en assembleur, les codes de mes mains s
 ```{bash}
 
 ```
-
-## 
 
 ## BYPASS DE NX et ASLR en utilisant ret2libc et des ROP
 
@@ -72,7 +71,10 @@ p.interactive()
 
 
 
-exemple de ROP :
+### exemple de ROP :
+
+#### /!\ il s'agit de comment j'ai déduit le fonctionnement du shellcode exposé sur le site. Il est probable que cela ne soit absolument pas le reflet de la réalité.
+
 l'instruction pop-pop-ret après strcpy
 
 AVANT STRCPY:
@@ -101,3 +103,6 @@ PILE APRES ROP :
 reste du sellcode instruction 1 (prochain strcpy ) <- EIP 
 (dépilé dans EIP mais pour l'image on laisse dans la pile)
 reste du shellcode ...
+
+> d'après ce que j'ai compris, la convention d'appel cdecl, qui est utilisée par défaut en C sous Linux/x86 fait que les arguments de la fonction ne sont pas dépilés quand utilisés mais lus grâce à sp (sp+4 et sp+8 pour strcpy). Il incombe dont au code après l'instruction ret de la fonction appelée de dépiler les arguments. 
+
