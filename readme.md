@@ -2,8 +2,10 @@
 Je n'ai aucune compétence préliminaire en assembleur, les codes de mes mains sont donc particulièrement moches et surement peu logiques.
 
 
-## introduction au shellcoding avec pile executable - RootMe
+## introduction au shellcoding avec pile executable
 [Conférence @VoydStack - Writing Shellcodes for dummies](https://www.youtube.com/watch?v=zxhQevqX_7w&t=1288s&ab_channel=Root-Me)
+
+[https://nehalzaman.medium.com](https://nehalzaman.medium.com/an-executable-stack-247ctf-f863a2fd5f3f)
 
 
 ## compilation et extraction d'un shellcode simple en assembleur
@@ -24,10 +26,17 @@ Je n'ai aucune compétence préliminaire en assembleur, les codes de mes mains s
 [x64_cheatsheet.pdf](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
 
 ## tester si la pile est executable
-```{bash}
 
+### utilitaire checksec
+```{bash}
+checksec --file <chemin>
 ```
 
+### bash plus commun
+recherche de GNU_STACK dans le header
+```{bash}
+readelf -l <chemin> 
+```
 ## BYPASS DE NX et ASLR en utilisant ret2libc et des ROP
 
 [www.trustwave.com](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/babys-first-nxplusaslr-bypass/)
@@ -106,3 +115,6 @@ reste du shellcode ...
 
 > d'après ce que j'ai compris, la convention d'appel cdecl, qui est utilisée par défaut en C sous Linux/x86 fait que les arguments de la fonction ne sont pas dépilés quand utilisés mais lus grâce à sp (sp+4 et sp+8 pour strcpy). Il incombe dont au code après l'instruction ret de la fonction appelée de dépiler les arguments. 
 
+
+## misc
+on peut avoir quelques infos sur l'executable avec l'utilitaire file. Si l'executable est compilé sans être stripped, il va contenir des infos de debugage.
