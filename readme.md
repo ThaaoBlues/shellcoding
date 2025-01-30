@@ -1,8 +1,9 @@
 # Petit readme où j'étale les ressources et réflexions utilisées au fur et à mesure de mon apprentissage des bases du shellcoding 
+Je n'ai aucune compétence préliminaire en assembleur, les codes de mes mains sont donc particulièrement moches et surement peu logiques.
 
 
 ## introduction au shellcoding avec pile executable - RootMe
-[]()
+[Conférence @VoydStack - Writing Shellcodes for dummies](https://www.youtube.com/watch?v=zxhQevqX_7w&t=1288s&ab_channel=Root-Me)
 
 
 ## compilation et extraction d'un shellcode simple en assembleur
